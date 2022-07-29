@@ -1,0 +1,30 @@
+package com.example.service;
+
+import javax.persistence.EntityNotFoundException;
+
+import org.modelmapper.ModelMapper;
+
+import com.example.exception.BandNotFoundException;
+import com.example.persistence.domain.Band;
+import com.example.persistence.repo.BandRepo;
+import com.example.rest.dto.BandDTO;
+
+public class BandService {
+	private BandRepo repo;
+	private ModelMapper mapper;
+	
+	public BandService(BandRepo repo, ModelMapper mapper) {
+		super();
+		this.repo = repo;
+		this.mapper = mapper;
+	}
+	public BandDTO readById(Long id) {
+        Band found = this.repo.findById(id).orElseThrow(BandNotFoundException::new);
+        return this.mapToDTO(found);
+    }
+	private BandDTO mapToDTO(Band band) {
+		return this.mapper.map(band, BandDTO.class);
+	}
+	
+
+}

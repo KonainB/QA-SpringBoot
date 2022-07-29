@@ -1,0 +1,14 @@
+package com.example.service;
+
+import javax.persistence.EntityNotFoundException;
+
+import com.example.persistence.domain.Band;
+import com.example.rest.dto.BandDTO;
+
+public class BandService {
+	public BandDTO readById(Long id) {
+        Band found = this.repo.findById(id).orElseThrow(EntityNotFoundException::new);
+        return this.mapToDTO(found);
+    }
+
+}

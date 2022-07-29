@@ -1,0 +1,23 @@
+package com.example.service;
+
+import javax.persistence.EntityNotFoundException;
+
+import com.example.persistence.domain.Musician;
+import com.example.persistence.repo.MusicianRepo;
+import com.example.rest.dto.MusicianDTO;
+
+public class MusicianService<AccountRepo> {
+	private MusicianRepo repo;
+	public MusicianService(MusicianRepo repo) {
+		super();
+		this.repo=repo;
+	}
+	public Musician createMusic(Musician music) {
+		return this.repo.save(music);
+	}
+	 public MusicianDTO readById(Long id) {
+	        Musician found = this.repo.findById(id).orElseThrow(EntityNotFoundException::new);
+	        return this.mapToDTO(found);
+	    }
+
+}

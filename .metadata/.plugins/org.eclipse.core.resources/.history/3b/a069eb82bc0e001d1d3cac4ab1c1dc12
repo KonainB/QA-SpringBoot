@@ -1,0 +1,32 @@
+package com.example.service;
+
+import javax.persistence.EntityNotFoundException;
+
+import org.modelmapper.ModelMapper;
+
+import com.example.exception.MusicianNotFoundException;
+import com.example.persistence.domain.Musician;
+import com.example.persistence.repo.MusicianRepo;
+import com.example.rest.dto.MusicianDTO;
+
+public class MusicianService<AccountRepo> {
+	private MusicianRepo repo;
+	private ModelMapper mapper;
+	
+	public MusicianService(MusicianRepo repo, ModelMapper mapper) {
+		super();
+		this.repo = repo;
+		this.mapper = mapper;
+	}
+	private MusicianDTO mapToDTO(Musician musician) {
+		return this.mapper.map(musician,  MusicianDTO.class);
+	}
+	 public MusicianDTO readById(Long id) {
+	        Musician found = this.repo.findById(id).orElseThrow(MusicianNotFoundException::new);
+	        return this.mapToDTO(found);
+	    }
+	
+	
+	
+}
+	

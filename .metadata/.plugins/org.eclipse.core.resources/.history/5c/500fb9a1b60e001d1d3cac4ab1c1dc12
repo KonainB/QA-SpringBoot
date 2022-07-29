@@ -1,0 +1,8 @@
+package com.example.rest.dto;
+
+public class BandDTO {
+	private int id;
+	private String name;
+	private String 
+
+}
