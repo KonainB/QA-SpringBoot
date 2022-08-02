@@ -1,6 +1,7 @@
 package com.example.persistence.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,50 +28,54 @@ public class Musician {
     @NotNull
     private String type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Band band;
 
-	public Musician(Long id, String name, Integer strings, String type, Band band) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.strings = strings;
-		this.type = type;
-		this.band = band;
-	}
-	public Musician() {
-		super();
-	}
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Integer getStrings() {
 		return strings;
 	}
+
 	public void setStrings(Integer strings) {
 		this.strings = strings;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public Band getBand() {
 		return band;
 	}
+
 	public void setBand(Band band) {
 		this.band = band;
 	}
+
+	@Override
+	public String toString() {
+		return "Musician [id=" + id + ", name=" + name + ", strings=" + strings + ", type=" + type + "]";
+	}
+
 
     
 }

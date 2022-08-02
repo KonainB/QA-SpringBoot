@@ -13,9 +13,7 @@ import com.example.repo.PersonRepo;
 
 @Service
 public class PersonService {
-
 	private PersonRepo repo;
-
 	private ModelMapper mapper;
 
 	public PersonService(PersonRepo repo, ModelMapper mapper) {

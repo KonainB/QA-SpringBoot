@@ -7,5 +7,8 @@ import org.springframework.http.HttpStatus;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Musician does not exist with that ID")
 public class MusicianNotFoundException extends EntityNotFoundException {
-	
+	public MusicianNotFoundException() {}
+	public MusicianNotFoundException(String msg) {
+		super(msg);
+	}
 }

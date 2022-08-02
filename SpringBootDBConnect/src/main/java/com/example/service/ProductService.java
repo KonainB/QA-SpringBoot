@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +13,7 @@ import com.example.repo.ProductRepo;
 @Service
 public class ProductService {
 	private ProductRepo repo;
-	//public List<Product> list=new ArrayList();
+	public List<Product> list=new ArrayList();
 	public ProductService(ProductRepo repo) {
 		super();
 		this.repo = repo;
@@ -37,9 +38,9 @@ public class ProductService {
 		boolean exists=this.repo.existsById(id);
 		return !exists;
 	}
-//	public List<Product> getProductByBrand(String brand){
-//		return this.repo.findProductbyBrand(brand);
-//	}
+	public List<Product> getProductByBrand(String brand){
+		return this.repo.findProductbyBrand(brand);
+	}
 //	public List<Product> getProductByName(String name){
 //		return this.repo.findProductByName(name);
 //	}

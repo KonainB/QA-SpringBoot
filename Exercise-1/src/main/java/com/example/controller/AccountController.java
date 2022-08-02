@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.dto.AccountDTO;
 import com.example.model.Account;
 import com.example.service.AccountService;
 
@@ -23,24 +24,24 @@ public class AccountController {
 	}
 	
 	@PostMapping("/createAccount")
-	public Account create(@RequestBody Account acc)
+	public AccountDTO create(@RequestBody Account acc)
 	{
-		return this.service.createAcc(acc);
+		return this.service.addAccount(acc);
 	}
 	@GetMapping("/readAccount")
-	public List<Account>getList()
+	public List<AccountDTO> getList()
 	{
-		return this.service.readAcc();
+		return this.service.getAllAccount();
 	}
 	@PutMapping("/updateAccount/{id}")
-	public Account update(@PathVariable int id,@RequestBody Account acc)
+	public AccountDTO update(@PathVariable int id,@RequestBody Account acc)
 	{
-		return this.service.updateAcc(id, acc);
+		return this.service.updateAccount( id, acc);
 	}
 	@DeleteMapping("/deleteAccount/{id}")
 	public void delete (@PathVariable int id)
 	{
-		this.service.deleteAcc(id);
+		this.service.removeAccount(id);
 	}
 	
 	@GetMapping("/home")

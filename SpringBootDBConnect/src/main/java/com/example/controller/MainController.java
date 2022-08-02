@@ -47,10 +47,10 @@ public class MainController {
 		return "My home is in UK";
 	}
 
-//	@GetMapping("/prod/{brand}")
-//	public List<Product> prodBrand(@PathVariable String brand) {
-//		return this.service.getProductByBrand(brand);
-//	}
+	@GetMapping("/prod/{brand}")
+	public List<Product> prodBrand(@PathVariable String brand) {
+		return this.service.getProductByBrand(brand);
+	}
 //
 //	@GetMapping("/prod/{name}")
 //	public List<Product> prodName(@PathVariable String name) {

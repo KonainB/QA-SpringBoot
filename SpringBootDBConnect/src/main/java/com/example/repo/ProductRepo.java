@@ -10,9 +10,9 @@ import com.example.model.Product;
 
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Integer>{
-//	@Query(value="select * from Product where name=?1", nativeQuery=true)
-//	List<Product> findProductbyBrand(String brand);
-//	
+	@Query(value="select * from Product where name=?1", nativeQuery=true)
+	List<Product> findProductbyBrand(String brand);
+	
 //	@Query("SELECT p from product WHERE p.name=?1")
 //	List<Product> findProductByName(String name);
 }
